@@ -25,7 +25,14 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <!-- App -->
-    <script src="src/app.js"></script>
+    <script src="src/app.js" async></script>
+
+    <!-- midtrans -->
+    <script
+      type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-lGos-ubwSjgzxjXF"
+    ></script>
   </head>
   <body>
     <!-- navbar start -->
@@ -87,7 +94,13 @@
 
         <div class="form-container" x-show="$store.cart.items.length">
           <form action="" id="checkoutForm">
-            <h5>Custom Detail</h5>
+            <input
+              type="hidden"
+              name="items"
+              x-model="JSON.stringify($store.cart.items)"
+            />
+            <input type="hidden" name="total" x-model="$store.cart.total" />
+            <h5>Customer Detail</h5>
 
             <label for="name">
               <span>Name</span>
@@ -105,7 +118,7 @@
             </label>
 
             <button
-              class="checkout-button"
+              class="checkout-button disabled"
               type="submit"
               id="checkout-button"
               value="checkout"
@@ -332,7 +345,7 @@
           </div>
           <div class="input-group">
             <i data-feather="phone"></i>
-            <input type="text" placeholder="no hp" />
+            <input type="number" placeholder="no hp" />
           </div>
           <button type="submit" class="btn">kirim pesan</button>
         </form>
@@ -360,11 +373,11 @@
     <!-- Footer end -->
 
     <!-- Model Box Item Detail Start -->
-    <div class="modal" id="item-detail-modal">
+    <div class="modal" id="item-detail-modal" x-data="products">
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
         <div class="modal-content">
-          <img src="img/produk/nastar.jpg" alt="Product 1" />
+          <img src="img/products/1.jpg" alt="Product 1" />
           <div class="product-content">
             <h3>Product 1</h3>
             <p>
@@ -380,60 +393,6 @@
               <i data-feather="star"></i>
             </div>
             <div class="product-price">IDR 80K <span>IDR 95K</span></div>
-            <a href="#"
-              ><i data-feather="shopping-cart"></i><span>add to cart</span></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal" id="item-detail-modal">
-      <div class="modal-container">
-        <a href="#" class="close-icon"><i data-feather="x"></i></a>
-        <div class="modal-content">
-          <img src="img/produk/mata kucing.jpg" alt="Product 2" />
-          <div class="product-content">
-            <h3>Product 2</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur similique dignissimos a, aut veniam quos provident
-              ratione qui vero, quas quo, dolorem non saepe sit.
-            </p>
-            <div class="product-stars">
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star"></i>
-            </div>
-            <div class="product-price">IDR 30K <span>IDR 55K</span></div>
-            <a href="#"
-              ><i data-feather="shopping-cart"></i><span>add to cart</span></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal" id="item-detail-modal">
-      <div class="modal-container">
-        <a href="#" class="close-icon"><i data-feather="x"></i></a>
-        <div class="modal-content">
-          <img src="img/produk/putri salju.jpg" alt="Product 3" />
-          <div class="product-content">
-            <h3>Product 3</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur similique dignissimos a, aut veniam quos provident
-              ratione qui vero, quas quo, dolorem non saepe sit.
-            </p>
-            <div class="product-stars">
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star"></i>
-            </div>
-            <div class="product-price">IDR 75K <span>IDR 80K</span></div>
             <a href="#"
               ><i data-feather="shopping-cart"></i><span>add to cart</span></a
             >
